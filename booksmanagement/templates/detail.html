@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 class="display-10">書籍詳細ページ</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        書籍タイトル : {{ object.title }}
+    </div>
+    <div class="alert alert-success" role="alert">
+        メモ : {{ object.memo }}
+    </div>
+    <div class="alert alert-success" role="alert">
+        状態 : {{ object.read }}
+    </div>
+    <div class="alert alert-success" role="alert">
+        購入日 : {{ object.p_date | date:"o/n/j" }}
+    </div>
+
+    <button class="btn btn-primary" onclick="history.back(-1)">戻る</button>
+
+</div>
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="display-10">書籍更新ページ</h1>
+<div class="container">
+    <div class="alert alert-warning" role="alert">
+        <div class="container">
+            <form action='' method='POST'>{% csrf_token %}
+               
+            <p><label for="id_title">・書籍タイトル : </label> <input type="text" name="title" value="{{ object.title }}" maxlength="100" required id="id_title"></p>
+            <p><label for="id_memo">・メモ : </label> <textarea name="memo" cols="40" rows="10" required id="id_memo">{{ object.memo }}</textarea></p>
+            <p><label for="id_read">・状態 : </label> <select name="read" id="id_read">
+            <option value="unread" selected>未読</option>
+            <option value="read">既読</option>
+            </select></p>
+            <p><label for="id_p_date">・購入日 : 
+            </label> <input type="text" name="p_date" value= {{object.p_date | date:"o-n-j"}} required id="id_p_date"><input type="hidden" name="initial-p_date" value={{object.p_date | date:"o-n-j"}} id="initial-id_p_date"></p>
+                        
+                <input type='submit' value='更新'>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+ {{ form.as_p }}

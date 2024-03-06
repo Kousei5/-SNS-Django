@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="display-10">書籍追加ページ</h1>
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <form action='' method='POST'>{% csrf_token %}
+                
+                <p><label for="id_title">・書籍タイトル : </label> <input type="text" name="title" maxlength="100" required id="id_title"></p>
+                <p><label for="id_memo">・メモ : </label> <textarea name="memo" cols="40" rows="10" required id="id_memo"></textarea></p>
+                <p><label for="id_read">・状態 : </label> <select name="read" id="id_read">
+                <option value="unread" selected>未読</option>
+                <option value="read">既読</option>
+                </select></p>
+                <p>・購入日 : {{ form.p_date }}</p>
+
+                <input type='submit' value='追加'>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{{ form.as_p }}

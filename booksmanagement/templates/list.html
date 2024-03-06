@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    
+<h1 class="display-4">書籍一覧ページ</h1>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <a href="{% url 'add' %}" class="btn btn-secondary mb-2" tabindex="-1" role="button" aria-disabled="true">追加</a>
+    {% for item in object_list %}
+    <div class="container">
+            <div class="container"> 
+                <div class="alert alert-info" role="alert">
+                    <p>・書籍タイトル : {{ item.title }}</p>
+                    <p>・購入日 : {{ item.p_date | date:"o/n/j" }}</p>
+                    <a href="{% url 'detail' item.pk %}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">詳細</a>
+                    <a href="{% url 'delete' item.pk %}" class="btn btn-success btn-lg" tabindex="-1" role="button" aria-disabled="true">削除</a>
+                    <a href="{% url 'update' item.pk %}" class="btn btn-info btn-lg" tabindex="-1" role="button" aria-disabled="true">更新</a>
+                </div>
+            </div>
+    </div>
+
+    {% endfor %}
+</div>
+{% endblock content %}
