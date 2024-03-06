@@ -1,0 +1,12 @@
+{% block content %}
+{% if user.is_authenticated %}
+<form method="post">{% csrf_token %}
+   <p>本当に削除してもよろしいですか?</p>
+   <input type="submit" value="削除する">
+</form>
+
+{% else %}
+<a href="{% url 'login' %}">plese login</a>
+{% endif %}
+
+{% endblock content %}
